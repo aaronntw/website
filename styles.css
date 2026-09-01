@@ -1,6 +1,3 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "../vendor/shadcn-tailwind-4.13.0.css";
 
 :root{--paper:#f6f6f3;--surface:#fff;--ink:#202422;--muted:#656c68;--line:#d7dbd7;--accent:#315c4b;--body:#3d4440;--copy:#444b47;--max:1120px;color-scheme:light}
 :root[data-theme="dark"]{--paper:#171a18;--surface:#1d211f;--ink:#e9ece9;--muted:#9da59f;--line:#343a36;--accent:#86b29e;--body:#c9cfcb;--copy:#bbc2bd;color-scheme:dark}
@@ -42,3 +39,5 @@ footer div:nth-child(2){max-width:640px}footer div:nth-child(2) p{margin:0 0 18p
 @media(max-width:760px){nav{gap:14px}.nav-area{gap:12px}.site-header{overflow-x:auto}.hero{padding-top:56px;padding-bottom:58px}.summary{font-size:17px}.section{padding-top:56px;padding-bottom:56px}.two-column,.timeline article,footer{grid-template-columns:1fr;gap:24px}.section-heading{display:block}.section-heading>p{text-align:left;margin-top:12px}.timeline article{gap:10px}.project{grid-template-columns:42px 1fr}.project dl div{grid-template-columns:1fr;gap:2px}.homelab-intro{grid-template-columns:1fr;gap:14px}.lab-grid{grid-template-columns:1fr 1fr}.footer-note{grid-column:1}}
 @media(max-width:520px){nav a:nth-child(2),nav a:nth-child(4){display:none}.lab-grid{grid-template-columns:1fr}.facts div{grid-template-columns:1fr;gap:2px}.hero h1{font-size:44px}.section-heading{margin-bottom:28px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body{transition:none}}
+
+
