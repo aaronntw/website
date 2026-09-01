@@ -1,3 +1,5 @@
+import { ThemeToggle } from "@/components/theme-toggle";
+
 const experience = [
   { period: "2023 — present", role: "Cyber Security & Network Engineering", detail: "Engineering and operating enterprise security across Palo Alto, FortiGate, Zscaler ZIA/ZPA, Azure and AWS environments." },
   { period: "2018 — 2023", role: "Integration Architecture & Digital Transformation", detail: "Designed integration landscapes, APIs, SSO and security assessments for complex enterprise platforms and transformation programmes." },
@@ -26,7 +28,10 @@ export default function Home() {
     <main id="top">
       <header className="site-header">
         <a className="wordmark" href="#top">Aaron Ng</a>
-        <nav aria-label="Main navigation">{navigation.map((item) => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav>
+        <div className="nav-area">
+          <nav aria-label="Main navigation">{navigation.map((item) => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav>
+          <ThemeToggle />
+        </div>
       </header>
 
       <section className="hero" aria-labelledby="page-title">
