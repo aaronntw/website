@@ -1,5 +1,3 @@
-const capabilities = ["Network security architecture", "Firewall & Zero Trust engineering", "Cloud and hybrid infrastructure", "Enterprise integration architecture", "Containerisation & self-hosting", "Technical risk assessment"];
-
 const experience = [
   { period: "2023 — present", role: "Cyber Security & Network Engineering", detail: "Engineering and operating enterprise security across Palo Alto, FortiGate, Zscaler ZIA/ZPA, Azure and AWS environments." },
   { period: "2018 — 2023", role: "Integration Architecture & Digital Transformation", detail: "Designed integration landscapes, APIs, SSO and security assessments for complex enterprise platforms and transformation programmes." },
@@ -7,57 +5,77 @@ const experience = [
 ];
 
 const projects = [
-  { number: "01", title: "EV Efficiency Tracker", description: "A self-hosted application for tracking charging sessions, energy efficiency and ownership costs—with SQLite and PostgreSQL support, analytics and containerised deployment.", tags: ["Product engineering", "PostgreSQL", "Docker"] },
-  { number: "02", title: "Enterprise Security Modernisation", description: "Firewall platform refreshes, cloud workload repatriation and Zero Trust connector migrations designed around continuity, control and operational clarity.", tags: ["Palo Alto", "Zscaler", "Hybrid cloud"] },
-  { number: "03", title: "The Practical Home Lab", description: "A continuously evolving environment for learning by doing: segmented networking, private cloud, secure DNS, remote access, automation and observability.", tags: ["TrueNAS", "OPNsense", "Home Assistant"] },
+  { title: "EV Efficiency Tracker", problem: "Charging data, efficiency and ownership costs were fragmented across apps and spreadsheets.", built: "A self-hosted application for recording charging sessions and analysing efficiency and cost over time.", technologies: "TypeScript · PostgreSQL / SQLite · Docker", status: "In active personal use; deployed as a containerised service." },
+  { title: "Enterprise Security Modernisation", problem: "Legacy security platforms and cloud connectivity needed to change without disrupting critical services.", built: "Firewall refreshes, workload repatriation plans and Zero Trust connector migrations with explicit operational controls.", technologies: "Palo Alto · FortiGate · Zscaler · Azure · AWS", status: "Delivered across production enterprise environments." },
+  { title: "Infrastructure Automation", problem: "Repeated infrastructure tasks were slow to reproduce and difficult to audit.", built: "Small, purpose-built tools and repeatable deployment workflows for services I operate myself.", technologies: "Containers · Linux · Git · Shell · Networking", status: "Continuously refined through practical use in the homelab." },
 ];
 
+const homelab = [
+  ["Compute & storage", "Containerised services backed by resilient local storage, with deliberate separation between data and workloads."],
+  ["Network", "Segmented networks, policy-based access, secure DNS and controlled ingress rather than a flat trusted LAN."],
+  ["Remote access", "Private access to internal services using identity-aware and encrypted connectivity; no unnecessary public exposure."],
+  ["Operations", "Backups, monitoring, service health checks and documented recovery steps for the systems that matter."],
+  ["Automation", "Repeatable configuration and deployment where it reduces effort; manual control where it improves understanding."],
+  ["Current focus", "Improving observability, reducing operational complexity and keeping the environment understandable."],
+];
+
+const navigation = ["About", "Experience", "Projects", "Homelab", "Contact"];
+
 export default function Home() {
-  return <main>
-    <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="Aaron Ng, home">AN<span>.</span></a>
-      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#experience">Experience</a></nav>
-      <a className="domain" href="#contact">aaronntw.com <span aria-hidden="true">↗</span></a>
-    </header>
+  return (
+    <main id="top">
+      <header className="site-header">
+        <a className="wordmark" href="#top">Aaron Ng</a>
+        <nav aria-label="Main navigation">{navigation.map((item) => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav>
+      </header>
 
-    <section className="hero" id="top">
-      <div className="hero-kicker"><span className="status-dot" />Based in Malaysia · Building secure systems</div>
-      <h1>I make complex<br />technology <em>work.</em></h1>
-      <div className="hero-bottom">
-        <p>I’m Aaron Ng—a network security engineer and technology builder working across cybersecurity, enterprise architecture and practical software.</p>
-        <a className="round-link" href="#work" aria-label="View selected work">↓</a>
-      </div>
-      <div className="signal" aria-hidden="true"><span /><span /><span /><span /><span /></div>
-    </section>
+      <section className="hero" aria-labelledby="page-title">
+        <p className="label">Based in Malaysia</p>
+        <h1 id="page-title">Aaron Ng</h1>
+        <p className="role">Data Architecture · Network Security · Infrastructure</p>
+        <p className="summary">I work across enterprise architecture, network security and infrastructure. Outside work, I build and self-host tools that solve problems I actually have.</p>
+      </section>
 
-    <section className="intro section" id="about">
-      <p className="eyebrow">01 / Profile</p>
-      <div><h2>Security thinking.<br />Builder’s mindset.</h2>
-        <p className="large-copy">For more than 11 years, I’ve worked where infrastructure, integration and security meet. I enjoy turning messy technical constraints into systems that are resilient, understandable and useful to the people running them.</p>
-        <p className="muted-copy">My work spans enterprise network security, cloud controls, Zero Trust, system integration and data architecture. Outside work, I build software and run a hands-on home lab—because the best way to understand a system is to operate one.</p>
-      </div>
-    </section>
+      <section className="section two-column" id="about">
+        <div><p className="section-number">01</p><h2>About</h2></div>
+        <div className="prose">
+          <p>I am a technical practitioner with more than a decade of experience across enterprise applications, integration architecture and cyber security.</p>
+          <p>My work sits between design and operations: understanding constraints, making sensible trade-offs and leaving systems clearer than I found them. I value boring technology used well, documentation that survives handover and controls that work in practice.</p>
+          <dl className="facts">
+            <div><dt>Focus</dt><dd>Architecture, security, infrastructure</dd></div>
+            <div><dt>Approach</dt><dd>Practical, evidence-led, maintainable</dd></div>
+            <div><dt>Also</dt><dd>Self-hosting, small tools, systems operations</dd></div>
+          </dl>
+        </div>
+      </section>
 
-    <section className="capability-wrap">
-      <div className="capability-head"><p className="eyebrow">What I work with</p><p>Strategy grounded in implementation.</p></div>
-      <div className="capabilities">{capabilities.map((item, index) => <div className="capability" key={item}><span>0{index + 1}</span><p>{item}</p><i>—</i></div>)}</div>
-    </section>
+      <section className="section" id="experience">
+        <div className="section-heading"><div><p className="section-number">02</p><h2>Experience</h2></div><p>Selected areas of work, in reverse chronological order.</p></div>
+        <div className="timeline">{experience.map((item) => <article key={item.period}><p className="period">{item.period}</p><div><h3>{item.role}</h3><p>{item.detail}</p></div></article>)}</div>
+      </section>
 
-    <section className="projects section" id="work">
-      <div className="projects-heading"><p className="eyebrow">02 / Selected work</p><h2>Things I’ve built<br />and helped transform.</h2></div>
-      <div className="project-list">{projects.map((project) => <article className="project" key={project.title}>
-        <span className="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{project.description}</p>
-        <ul aria-label={`${project.title} technologies`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div>
-      </article>)}</div>
-    </section>
+      <section className="section" id="projects">
+        <div className="section-heading"><div><p className="section-number">03</p><h2>Projects</h2></div><p>Technical work described by the problem and outcome.</p></div>
+        <div className="project-list">{projects.map((project, index) => <article className="project" key={project.title}>
+          <p className="index">0{index + 1}</p><div className="project-content"><h3>{project.title}</h3><dl>
+            <div><dt>Problem</dt><dd>{project.problem}</dd></div><div><dt>What I built</dt><dd>{project.built}</dd></div>
+            <div><dt>Technologies</dt><dd>{project.technologies}</dd></div><div><dt>Result / status</dt><dd>{project.status}</dd></div>
+          </dl></div>
+        </article>)}</div>
+      </section>
 
-    <section className="experience section" id="experience">
-      <div><p className="eyebrow">03 / Experience</p><h2>From enterprise platforms to security engineering.</h2></div>
-      <div className="timeline">{experience.map((item) => <article key={item.period}><p className="period">{item.period}</p><h3>{item.role}</h3><p>{item.detail}</p></article>)}</div>
-    </section>
+      <section className="section" id="homelab">
+        <div className="section-heading"><div><p className="section-number">04</p><h2>Homelab</h2></div><p>A small environment for learning, operating and testing ideas properly.</p></div>
+        <div className="homelab-intro"><p>I run infrastructure at home to understand the full lifecycle of a system—not only how to deploy it, but how to secure, observe, maintain and recover it.</p><p>The goal is not novelty or scale. It is a dependable environment that provides useful services and a safe place to test changes before trusting them elsewhere.</p></div>
+        <div className="lab-grid">{homelab.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}</div>
+        <p className="stack"><span>Representative stack</span> TrueNAS · OPNsense · Docker · Home Assistant · Private DNS · VPN / Zero Trust access</p>
+      </section>
 
-    <footer id="contact"><p className="eyebrow">The next system starts with a conversation.</p><h2>Let’s make it<br /><em>work.</em></h2>
-      <div className="footer-row"><p>Aaron Ng · Network Security Engineer & Technology Builder</p><p>Malaysia · 2026</p></div>
-    </footer>
-  </main>;
+      <footer id="contact">
+        <div><p className="section-number">05</p><h2>Contact</h2></div>
+        <div><p>If you want to discuss architecture, security, infrastructure or a practical technical problem, get in touch.</p><a href="mailto:ngtongwu@gmail.com">ngtongwu@gmail.com</a></div>
+        <p className="footer-note">Aaron Ng · Malaysia · 2026</p>
+      </footer>
+    </main>
+  );
 }
